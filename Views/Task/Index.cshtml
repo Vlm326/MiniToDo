@@ -1,0 +1,51 @@
+﻿@model List<MiniToDo.Models.TaskItem>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Список задач";
+}
+
+<div class="container mt-4">
+
+    <h1 class="mb-4">Список задач</h1>
+
+    <!-- Кнопки управления -->
+    <div class="d-flex flex-wrap gap-2 mb-4">
+        <form method="get" asp-controller="Task" asp-action="Add" class="d-inline">
+            <button class="btn btn-success">+ Добавить задачу</button>
+        </form>
+
+        <form method="get" asp-controller="Task" asp-action="Complete" class="d-inline">
+            <button class="btn btn-primary">Выполнить задачи</button>
+        </form>
+
+        <form method="post" asp-controller="Task" asp-action="DeleteCompletedTasks" class="d-inline">
+            <button class="btn btn-danger">Удалить выполненные</button>
+        </form>
+    </div>
+
+    <!-- Адаптивная таблица -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="table-light">
+                <tr>
+                    <th>Номер</th>
+                    <th>Название</th>
+                    <th>Категория</th>
+                    <th>Статус</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var task in Model)
+                {
+                    <tr>
+                        <td>@task.Id</td>
+                        <td>@task.Title</td>
+                        <td>@task.Category</td>
+                        <td>@(task.IsCompleted ? "✅ Выполнено" : "❌ Не выполнено")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

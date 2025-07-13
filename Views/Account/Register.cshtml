@@ -1,0 +1,30 @@
+﻿@model MiniToDo.ViewModels.RegistrationViewModel
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewData["Title"] = "Регистрация";
+}
+
+<div class="container mt-4">
+	<h1 class="mb-4">Регистрация</h1>
+	<form asp-action="Register" method="post">
+		<div class="mb-3">
+			<label asp-for="Email" class="form-label"></label>
+			<input asp-for="Email" class="form-control" placeholder="exemple@mail.com" />
+			<span asp-validation-for="Email" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Password" class="form-label"></label>
+			<input asp-for="Password" type="password" class="form-control" placeholder="********"/>
+		</div>
+		<div class="mb-3">
+			<label asp-for="ConfirmPassword" class="form-label"></label>
+			<input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="********" />
+		</div>
+		<div class="mb-3">
+			<p class="tab-content">
+				@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+			</p>
+		</div>
+		<button type="submit" class="btn btn-primary">Зарегестрироваться</button>
+	</form>
+</div>

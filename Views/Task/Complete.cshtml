@@ -1,0 +1,49 @@
+﻿@model MiniToDo.Models.CompleteTaskViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Выполнить задачу";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4">Выполнить задачу</h1>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>Номер</th>
+                    <th>Название</th>
+                    <th>Категория</th>
+                    <th>Статус</th>
+                    <th>Действие</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var task in Model.Tasks)
+                {
+                    <tr>
+                        <td>@task.Id</td>
+                        <td>@task.Title</td>
+                        <td>@task.Category</td>
+                        <td>@(task.IsCompleted ? "✅ Выполнено" : "❌ Не выполнено")</td>
+                        <td>
+                            @if (!task.IsCompleted)
+                            {
+                                <form method="post" asp-controller="Task" asp-action="CompleteById" asp-route-id="@task.Id" class="d-inline">
+                                    <button type="submit" class="btn btn-success btn-sm">✔ Отметить</button>
+                                </form>
+                            }
+                            else
+                            {
+                                <span class="text-muted">—</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <a asp-controller="Task" asp-action="Index" class="btn btn-secondary mt-3">⬅ Назад</a>
+</div>

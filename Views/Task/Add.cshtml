@@ -1,0 +1,30 @@
+﻿@model MiniToDo.Models.TaskItem
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Добавить задачу";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4">Добавить задачу</h1>
+
+    <form method="post" asp-controller="Task" asp-action="Add" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label">Название</label>
+            <input asp-for="Title" class="form-control" placeholder="Например, купить хлеб" required />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Category" class="form-label">Категория</label>
+            <input asp-for="Category" class="form-control" placeholder="Например, продукты" required />
+        </div>
+
+        <div class="form-check mb-4">
+            <input asp-for="IsCompleted" class="form-check-input" />
+            <label asp-for="IsCompleted" class="form-check-label">Выполнено</label>
+        </div>
+
+        <button type="submit" class="btn btn-success">Добавить задачу</button>
+        <a asp-action="Index" asp-controller="Task" class="btn btn-secondary ms-2">Назад</a>
+    </form>
+</div>

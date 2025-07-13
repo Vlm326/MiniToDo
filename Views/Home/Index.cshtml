@@ -1,0 +1,22 @@
+﻿@{
+	ViewData["Title"] = "Home Page";
+	ViewData["Description"] = "Welcome to the home page of our application.";
+	ViewData["Keywords"] = "home, index, welcome";
+	ViewData["Author"] = "Vlm326";
+	Layout = "_Layout";
+}
+
+<div class="container mt-5">
+	<div class="card shadow-sm">
+		<div class="card-body text-center">
+			<h1 class="card-title mb-3">Добро пожаловать!</h1>
+			<p class="card-text">Нажмите на кнопку, чтобы войти в систему.</p>
+			<form asp-controller="Home" asp-action="RedirectToLogin" method="post">
+				<button type="submit" class="btn btn-primary">Войти</button>
+			</form>
+			<form asp-controller="Home" asp-action="RedirectToRegister" method="post">
+				<button type="submit" class="btn btn-primary">Создать аккаунт</button>
+			</form>
+		</div>
+	</div>
+</div>
