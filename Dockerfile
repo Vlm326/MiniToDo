@@ -1,18 +1,19 @@
-FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
-USER $APP_UID
+# Базовый образ с .NET SDK для сборки
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
-
-COPY *.sln ./
-COPY MiniToDo/*.csproj ./MiniToDo/
-RUN dotnet restore
-
-COPY. ./
-WORKDIR /app/MiniToDo
-RUN dotnet publish -c Release -o /out
-
-FROM mcr.microsoft.com/dotnet/aspnet:9.0 
-WORKDIR /app
-COPY --from=build /out .
 EXPOSE 80
-ENTRYPOINT ["dotnet", "MiniToDo.dll"]
 
+# Сборка приложения
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+COPY . .
+
+RUN dotnet restore
+RUN dotnet publish -c Release -o /app/publish
+
+# Финальный образ
+FROM base AS final
+WORKDIR /app
+COPY --from=build /app/publish .
+
+ENTRYPOINT ["dotnet", "MiniToDo.dll"]
