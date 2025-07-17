@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniToDo", "MiniToDo.csproj", "{EC5B0D43-BF43-7579-6C44-C3B1412EF0EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC5B0D43-BF43-7579-6C44-C3B1412EF0EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC5B0D43-BF43-7579-6C44-C3B1412EF0EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC5B0D43-BF43-7579-6C44-C3B1412EF0EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC5B0D43-BF43-7579-6C44-C3B1412EF0EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2BFDD3B3-EB7A-4D82-850D-DB0401D2BEB9}
+	EndGlobalSection
+EndGlobal

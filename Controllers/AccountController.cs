@@ -36,6 +36,7 @@ namespace MiniToDo.Controllers
             }
             else
             {
+                ModelState.AddModelError("", "Пользователя не существует или неверные данные");
                 Console.WriteLine("Пользователь не создан");
             }
                 ModelState.AddModelError("", "Неверный email или пароль");

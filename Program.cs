@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using MiniToDo.Data;
 using MiniToDo.Models;
 
-
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
@@ -28,10 +27,10 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 
 var app = builder.Build();
 
-if (!app.Environment.IsDevelopment())
+using (var scope = app.Services.CreateScope())
 {
-    app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
 }
 
 app.UseHttpsRedirection();

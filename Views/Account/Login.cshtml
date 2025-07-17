@@ -22,6 +22,15 @@
             <label asp-for="RememberMe" class="form-check-label"></label>
         </div>
         <button type="submit" class="btn btn-primary">Войти</button>
+        <div class="mb-3">
+            @foreach (var state in ViewData.ModelState.Values)
+            {
+                foreach (var error in state.Errors)
+                {
+                    <p class="text-danger">@error.ErrorMessage</p>
+                }
+            }
+        </div>
     </form>
 
 </div>
